@@ -1,0 +1,35 @@
+import socket
+import sys
+
+ENCODING: str = "ISO-8859-1"
+BUFFER: int = 4096
+HTTPPORT: int = 80
+HTTPSPORT: int = 443
+
+
+def main():
+    hostname: str = sys.argv[1]
+    req: str = f"GET / HTTP/1.1\nHost: {hostname}\nConnection: close\r\n"
+    
+    try: 
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) or None
+        s.connect((hostname, HTTPPORT))
+        s.sendall(req.encode(ENCODING))
+        res = b""
+        while True:
+            data = s.recv(BUFFER)
+            if not data:
+                break
+            res += data
+
+        print(res.decode(ENCODING))
+    except Exception as e:
+        print(f"Error: {e}")
+    finally:
+        if s:
+            s.close()
+
+
+if __name__ == "__main__":
+    main()
+
