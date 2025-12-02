@@ -19,6 +19,7 @@
             * pcap
             * json
         * Default to bin
+    * Send payloads with request
 """
 
 """

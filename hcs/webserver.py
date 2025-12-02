@@ -14,6 +14,9 @@
         * Sequentially 
         * Asynchronously 
     * Set socket options (`setsockopt()`)
+    * Print client IP address
+    * Extract and print the request method
+    * Extract and print the request payload
 """
 
 import socket
@@ -34,6 +37,7 @@ def main():
         listen_sock.bind((HOST, PORT))
         listen_sock.listen()
 
+        print("=" * 10 + f" Server listening on port: {PORT} " + "=" * 10)
         while True:
             client_con = listen_sock.accept()
             client_sock = client_con[0]
