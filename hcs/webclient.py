@@ -21,6 +21,14 @@
         * Default to bin
 """
 
+"""
+* Issues:
+    1. Value conflict for 'hostname'
+        * If 'hotname' is a website name DNS finds the IP address 
+        * Hence value of 'hostname' can be used for 'Host' HTTP header 
+        * If 'hostname' is an IP address it cannot be used (ex: localhost)
+"""
+
 import socket 
 import sys
 
