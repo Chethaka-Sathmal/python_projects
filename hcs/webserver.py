@@ -13,6 +13,7 @@
     * How to handle multiple requests
         * Sequentially 
         * Asynchronously 
+    * Set socket options (`setsockopt()`)
 """
 
 import socket
