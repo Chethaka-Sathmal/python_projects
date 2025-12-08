@@ -35,7 +35,6 @@ def main():
     try:
         custom_port: str = sys.argv[1]
         if custom_port:
-            print("Hello")
             port = int(custom_port)
     except Exception as e:
         pass
