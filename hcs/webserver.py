@@ -23,7 +23,7 @@ import socket
 import sys
 
 HOST: str = "127.0.0.1"
-PORT: int = 8080
+DEFAULTPORT: int = 28333 
 BUFFER: int = 4096
 ENCODING: str = "ISO 8859-1"
 
@@ -31,13 +31,22 @@ def main():
     res: str = (
         "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 16\r\nConnection: close\r\n\r\nHello"
     )
+    port: int = DEFAULTPORT
+    try:
+        custom_port: str = sys.argv[1]
+        if custom_port:
+            print("Hello")
+            port = int(custom_port)
+    except Exception as e:
+        pass
 
     try:
         listen_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM, 6) or None
-        listen_sock.bind((HOST, PORT))
+        listen_sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        listen_sock.bind((HOST, port))
         listen_sock.listen()
 
-        print("=" * 10 + f" Server listening on port: {PORT} " + "=" * 10)
+        print("=" * 10 + f" Server listening on port: {port} " + "=" * 10)
         while True:
             client_con = listen_sock.accept()
             client_sock = client_con[0]
