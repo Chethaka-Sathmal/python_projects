@@ -8,15 +8,9 @@
 """
 
 """
-* Include:
-    * How to queue multiple requests
-    * How to handle multiple requests
-        * Sequentially 
-        * Asynchronously 
-    * Set socket options (`setsockopt()`)
-    * Print client IP address
-    * Extract and print the request method
-    * Extract and print the request payload
+* Check later:
+    * How multiple requests are queued
+    * What is `setsockopt()`
 """
 
 import socket
