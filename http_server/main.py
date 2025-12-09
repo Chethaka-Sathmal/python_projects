@@ -50,7 +50,7 @@ def main():
                     break
 
             header, payload = req.split(b"\r\n\r\n")
-            parse_header(header)
+            header_dict: dict = parse_header(header)
 
             client_sock.send(res.encode(ENCODING))
             client_sock.close()
