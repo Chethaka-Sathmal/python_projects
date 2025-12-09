@@ -15,11 +15,9 @@
 
 import socket
 import sys
+from config import HOST, DEFAULTPORT, BUFFER, ENCODING
+from parse import parse_header
 
-HOST: str = "127.0.0.1"
-DEFAULTPORT: int = 28333 
-BUFFER: int = 4096
-ENCODING: str = "ISO 8859-1"
 
 def main():
     res: str = (
@@ -51,7 +49,8 @@ def main():
                 if b"\r\n\r\n" in req:
                     break
 
-            print(req.decode(ENCODING))
+            header, payload = req.split(b"\r\n\r\n")
+            parse_header(header)
 
             client_sock.send(res.encode(ENCODING))
             client_sock.close()
