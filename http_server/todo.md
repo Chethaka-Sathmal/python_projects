@@ -20,3 +20,8 @@
     * text 
 * Security 
     * Define server root and make sure can't access files outside it
+
+# Check later 
+
+- [ ] How multiple requests are queued
+- [ ] What is `setsockopt()`
