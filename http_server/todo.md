@@ -11,3 +11,12 @@
     * 200 if successful 
     * 404 if not found
 * Create appropriate response header 
+    * Content lenght 
+    * Content type
+        * Default to `application/octet-stream`
+        * add `charset=iso-8859-1`
+* Handle two types of files at least 
+    * HTML
+    * text 
+* Security 
+    * Define server root and make sure can't access files outside it
